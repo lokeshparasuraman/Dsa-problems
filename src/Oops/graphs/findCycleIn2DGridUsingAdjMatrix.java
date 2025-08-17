@@ -1,3 +1,5 @@
+package Oops.graphs;
+
 //1559.find cycle in a 2d grid Use recursion and dfs //
 class findCycleIn2DGriduingAdjMatrix {
     private int m;
