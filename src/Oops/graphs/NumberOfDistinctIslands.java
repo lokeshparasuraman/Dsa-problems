@@ -15,7 +15,6 @@ class Main {
                 grid[i][j] = scanner.nextInt();
             }
         }
-
         System.out.println(NoOfIslands(grid));
     }
 
