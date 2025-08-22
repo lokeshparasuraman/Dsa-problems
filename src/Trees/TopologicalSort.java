@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class TopologicalSort {
+    //Only for Directed Acyclic graph//
     public static List<Integer> sort(int[][]graph){
         List<Integer> list=new ArrayList<>();
         int m= graph.length;
