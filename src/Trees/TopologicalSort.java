@@ -5,7 +5,8 @@ import java.util.Stack;
 
 public class TopologicalSort {
     //Only for Directed Acyclic graph//
-    //Time complexity:
+    //Time complexity:O(N+E) for all n dfs and O(N) for sorting
+    //Space complexity O(3N) for additional space taken by algo
     public static List<Integer> sort(int[][]graph){
         List<Integer> list=new ArrayList<>();
         int m= graph.length;
