@@ -1,7 +1,4 @@
 package Oops.LinkedLists;
-
-import java.util.Arrays;
-
 public class MergeSort {
     public static class ListNode {
         int val;
