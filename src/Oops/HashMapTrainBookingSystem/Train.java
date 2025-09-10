@@ -21,8 +21,8 @@ public class Train {
         this.upperBerths = new LinkedList<>();
         this.racQueue = new LinkedList<>();
         this.waitingList = new LinkedList<>();
-        this.lowerLimit=lowerCount;
-        this.upperLimit=upperCount;
+        this.lowerLimit = lowerCount;
+        this.upperLimit = upperCount;
         this.racLimit = racLimit;
         this.wlLimit = wlLimit;
 

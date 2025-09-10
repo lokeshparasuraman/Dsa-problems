@@ -18,11 +18,10 @@ public class BookingSystem {
         String berth = null, status = null;
 
         // Try preference first
-        if ((p.age > 60 || p.gender.equalsIgnoreCase("female"))&&!train.lowerBerths.isEmpty()) {
+        if ((p.age > 60 || p.gender.equalsIgnoreCase("female")) && !train.lowerBerths.isEmpty()) {
             berth = train.lowerBerths.poll();
             status = "Confirmed";
-        }
-        else if (p.berthPreference.equals("L") && !train.lowerBerths.isEmpty()) {
+        } else if (p.berthPreference.equals("L") && !train.lowerBerths.isEmpty()) {
             berth = train.lowerBerths.poll();
             status = "Confirmed";
         } else if (p.berthPreference.equals("U") && !train.upperBerths.isEmpty()) {

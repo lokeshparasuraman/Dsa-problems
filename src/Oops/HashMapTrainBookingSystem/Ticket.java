@@ -2,7 +2,7 @@ package Oops.HashMapTrainBookingSystem;
 
 import Oops.HashMapTrainBookingSystem.Passenger;
 
-public class Ticket{
+public class Ticket {
     String ticketId;
     Passenger passenger;
     String berth;
@@ -14,9 +14,10 @@ public class Ticket{
         this.berth = berth;
         this.status = status;
     }
+
     @Override
-    public String toString(){
-        return "Ticket ID:"+ticketId+"Passenger:"+passenger+"Berth:"+berth+"Status:"+status;
+    public String toString() {
+        return "Ticket ID:" + ticketId + "Passenger:" + passenger + "Berth:" + berth + "Status:" + status;
     }
 }
 

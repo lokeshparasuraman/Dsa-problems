@@ -1,5 +1,7 @@
 package Oops.HashMapTrainBookingSystem;
+
 import java.util.Scanner;
+
 import static Oops.HashMapTrainBookingSystem.BookingSystem.tickets;
 import static Oops.HashMapTrainBookingSystem.BookingSystem.trains;
 
@@ -36,7 +38,7 @@ public class RunApp {
                     break;
                 }
                 case 2: {
-                    if(trains.isEmpty()){
+                    if (trains.isEmpty()) {
                         System.out.println("ADD A TRAIN FIRST TO START BOOKING");
                         break;
                     }
@@ -57,7 +59,7 @@ public class RunApp {
                 }
 
                 case 3: {
-                    if(tickets.isEmpty()){
+                    if (tickets.isEmpty()) {
                         System.out.println("NO TICKETS WERE BOUGHT!!");
                         break;
                     }
@@ -67,21 +69,20 @@ public class RunApp {
                     break;
                 }
                 case 4: {
-                    if(trains.isEmpty()){
+                    if (trains.isEmpty()) {
                         System.out.println("NO TRAINS WERE ADDED TO VIEW!!");
                         break;
                     }
                     system.viewTrains();
                     break;
                 }
-                case 5:{
+                case 5: {
                     system.viewTickets();
                     break;
                 }
                 case 6: {
-                    System.out.println("Thank you come again");
+                    System.out.println("Thank you come again\uD83D\uDE0A..");
                     System.exit(0);
-                    con = false;
                     break;
                 }
 
