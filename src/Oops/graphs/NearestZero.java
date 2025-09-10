@@ -13,6 +13,7 @@ class Pair {
     }
 }
 
+
 class NearestZero {
     public static int[][] nearestZero(int[][] grid) {
         int m = grid.length;

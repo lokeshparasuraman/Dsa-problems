@@ -1,4 +1,5 @@
 package Oops.LinkedLists;
+
 public class MergeSort {
     public static class ListNode {
         int val;
@@ -70,7 +71,7 @@ public class MergeSort {
         System.out.print("[");
         while (head != null) {
 
-            System.out.print(head.val +" ");
+            System.out.print(head.val + " ");
 
             head = head.next;
         }
@@ -83,5 +84,6 @@ public class MergeSort {
         lists[1] = createList(new int[]{1, 3, 4});
         lists[2] = createList(new int[]{2, 6});
         printList(sort(lists));
+
     }
 }
