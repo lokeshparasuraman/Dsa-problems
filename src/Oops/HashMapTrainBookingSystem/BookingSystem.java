@@ -18,7 +18,11 @@ public class BookingSystem {
         String berth = null, status = null;
 
         // Try preference first
-        if (p.berthPreference.equals("L") && !train.lowerBerths.isEmpty()) {
+        if ((p.age > 60 || p.gender.equalsIgnoreCase("female"))&&!train.lowerBerths.isEmpty()) {
+            berth = train.lowerBerths.poll();
+            status = "Confirmed";
+        }
+        else if (p.berthPreference.equals("L") && !train.lowerBerths.isEmpty()) {
             berth = train.lowerBerths.poll();
             status = "Confirmed";
         } else if (p.berthPreference.equals("U") && !train.upperBerths.isEmpty()) {
@@ -65,10 +69,24 @@ public class BookingSystem {
         }
         for (Train train : trains.values()) {
             System.out.println("\nTrain No: " + train.trainNo + " | " + train.trainName);
-            System.out.println("Available Lower Berths: " + train.lowerBerths.size());
-            System.out.println("Available Upper Berths: " + train.upperBerths.size());
+            System.out.println("Available Lower Berths: " + train.lowerBerths.size() + "/" + train.lowerLimit);
+            System.out.println("Available Upper Berths: " + train.upperBerths.size() + "/" + train.upperLimit);
             System.out.println("RAC Occupied: " + train.racQueue.size() + "/" + train.racLimit);
             System.out.println("Waiting List Occupied: " + train.waitingList.size() + "/" + train.wlLimit);
+        }
+
+    }
+
+    public void viewTickets() {
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets available.");
+            return;
+        }
+        for (Ticket ticket : tickets.values()) {
+            System.out.println("Ticket ID:" + ticket.ticketId);
+            System.out.println("Passenger details:" + ticket.passenger);
+            System.out.println("Berth allocated:" + ticket.berth);
+            System.out.println("Status:" + ticket.status);
         }
 
     }

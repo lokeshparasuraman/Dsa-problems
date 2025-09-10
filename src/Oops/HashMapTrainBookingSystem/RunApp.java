@@ -5,14 +5,14 @@ import static Oops.HashMapTrainBookingSystem.BookingSystem.trains;
 
 public class RunApp {
     static Scanner sc = new Scanner(System.in);
-    static BookingSystem ticket = new BookingSystem();
+    static BookingSystem system = new BookingSystem();
 
     public static void main(String[] args) {
         boolean con = true;
 
         while (con) {
             System.out.println("... Train Booking App ...");
-            System.out.println("1.Add Train\n2.Book Ticket\n3.Cancel Ticket\n4.View trains\n5.Exit");
+            System.out.println("1.Add Train\n2.Book Ticket\n3.Cancel Ticket\n4.View trains\n5.View tickets\n6.Exit");
             System.out.println("Enter Your Option");
             int c = sc.nextInt();
             sc.nextLine();
@@ -52,7 +52,7 @@ public class RunApp {
                     String gender = sc.nextLine().toUpperCase();
                     System.out.println("ENTER BERTH YOU PREFER(L/U):");
                     String berth = sc.nextLine().toUpperCase();
-                    ticket.bookTicket(trainNo, new Passenger(name, age, gender, berth));
+                    system.bookTicket(trainNo, new Passenger(name, age, gender, berth));
                     break;
                 }
 
@@ -63,7 +63,7 @@ public class RunApp {
                     }
                     System.out.println("ENTER TICKET ID TO CANCEL");
                     String id = sc.nextLine();
-                    ticket.cancelTicket(id);
+                    system.cancelTicket(id);
                     break;
                 }
                 case 4: {
@@ -71,10 +71,14 @@ public class RunApp {
                         System.out.println("NO TRAINS WERE ADDED TO VIEW!!");
                         break;
                     }
-                    ticket.viewTrains();
+                    system.viewTrains();
                     break;
                 }
-                case 5: {
+                case 5:{
+                    system.viewTickets();
+                    break;
+                }
+                case 6: {
                     System.out.println("Thank you come again");
                     System.exit(0);
                     con = false;

@@ -11,6 +11,8 @@ public class Train {
     Queue<Ticket> waitingList;
     int racLimit;
     int wlLimit;
+    int lowerLimit;
+    int upperLimit;
 
     Train(int trainNo, String trainName, int lowerCount, int upperCount, int racLimit, int wlLimit) {
         this.trainNo = trainNo;
@@ -19,6 +21,8 @@ public class Train {
         this.upperBerths = new LinkedList<>();
         this.racQueue = new LinkedList<>();
         this.waitingList = new LinkedList<>();
+        this.lowerLimit=lowerCount;
+        this.upperLimit=upperCount;
         this.racLimit = racLimit;
         this.wlLimit = wlLimit;
 
