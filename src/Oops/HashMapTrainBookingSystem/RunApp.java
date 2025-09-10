@@ -24,7 +24,7 @@ public class RunApp {
                     int trainNo = sc.nextInt();
                     sc.nextLine();
                     System.out.println("ENTER TRAIN NAME");
-                    String tname = sc.nextLine().toUpperCase();
+                    String tName = sc.nextLine().toUpperCase();
                     System.out.println("ENTER TRAIN LOWER_BERTHS COUNT");
                     int lB = sc.nextInt();
                     System.out.println("ENTER TRAIN UPPER_BERTHS COUNT");
@@ -33,7 +33,7 @@ public class RunApp {
                     int rac = sc.nextInt();
                     System.out.println("ENTER TRAIN WAITING LIST COUNT");
                     int wL = sc.nextInt();
-                    Train train = new Train(trainNo, tname, lB, uB, rac, wL);
+                    Train train = new Train(trainNo, tName, lB, uB, rac, wL);
                     trains.put(trainNo, train);
                     break;
                 }
