@@ -15,6 +15,6 @@ public class Passenger {
 
     @Override
     public String toString() {
-        return " Passenger_Name:" + name + " Age:" + age + " Gender:" + gender + " Berth Preference:" + berthPreference;
+        return "Passenger_Name:" + name + " Age:" + age + " Gender:" + gender + " Berth Preference:" + berthPreference;
     }
 }

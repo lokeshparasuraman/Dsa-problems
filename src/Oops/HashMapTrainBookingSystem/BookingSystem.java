@@ -5,7 +5,6 @@ import java.util.*;
 public class BookingSystem {
     public static HashMap<String, Ticket> tickets = new HashMap<>();
     public static HashMap<Integer, Train> trains = new HashMap<>();
-    int tc = 1000;
 
     public void bookTicket(int trainNo, Passenger p) {
         Train train = trains.get(trainNo);
@@ -14,7 +13,7 @@ public class BookingSystem {
             return;
         }
 
-        String ticketId = "T" + tc++;
+        String ticketId = "T" + train.tc++;
         String berth = null, status = null;
 
         // Try preference first
@@ -39,7 +38,7 @@ public class BookingSystem {
         // No berths → RAC
         else if (train.racQueue.size() < train.racLimit) {
             status = "RAC";
-            Ticket t = new Ticket(ticketId, p, null, status);
+            Ticket t = new Ticket(ticketId, p, null, status, trainNo, train.trainName);
             train.racQueue.add(t);
             tickets.put(ticketId, t);
             return;
@@ -47,7 +46,7 @@ public class BookingSystem {
         // No RAC → WL
         else if (train.waitingList.size() < train.wlLimit) {
             status = "Waiting";
-            Ticket t = new Ticket(ticketId, p, null, status);
+            Ticket t = new Ticket(ticketId, p, null, status, trainNo, train.trainName);
             train.waitingList.add(t);
             tickets.put(ticketId, t);
             return;
@@ -56,36 +55,42 @@ public class BookingSystem {
             return;
         }
 
-        // Create confirmed ticket
-        Ticket ticket = new Ticket(ticketId, p, berth, status);
+
+        Ticket ticket = new Ticket(ticketId, p, berth, status, trainNo, train.trainName);
         tickets.put(ticketId, ticket);
+        train.confirmedTickets.put(ticketId, ticket);
     }
 
-    public void viewTrains() {
-        if (trains.isEmpty()) {
-            System.out.println("No trains available.");
-            return;
-        }
+    public void viewTrainDetails() {
         for (Train train : trains.values()) {
             System.out.println("\nTrain No: " + train.trainNo + " | " + train.trainName);
-            System.out.println("Available Lower Berths: " + train.lowerBerths.size() + "/" + train.lowerLimit);
-            System.out.println("Available Upper Berths: " + train.upperBerths.size() + "/" + train.upperLimit);
-            System.out.println("RAC Occupied: " + train.racQueue.size() + "/" + train.racLimit);
-            System.out.println("Waiting List Occupied: " + train.waitingList.size() + "/" + train.wlLimit);
-        }
 
+            int totalCapacity = train.getTotalBerthCapacity();
+            int booked = train.confirmedTickets.size();
+
+            System.out.println("Confirmed Tickets: " + booked + "/" + totalCapacity);
+            System.out.println("RAC: " + train.racQueue.size() + "/" + train.racLimit);
+            System.out.println("WL: " + train.waitingList.size() + "/" + train.wlLimit);
+            System.out.println("---------------------------");
+        }
     }
+
 
     public void viewTickets() {
         if (tickets.isEmpty()) {
             System.out.println("No tickets available.");
             return;
         }
-        for (Ticket ticket : tickets.values()) {
-            System.out.println("Ticket ID:" + ticket.ticketId);
-            System.out.println("Passenger details:" + ticket.passenger);
-            System.out.println("Berth allocated:" + ticket.berth);
-            System.out.println("Status:" + ticket.status);
+        for (Train t : trains.values()) {
+            System.out.println("Train Number:" + t.trainNo + "|" + "Train Name:" + t.trainName);
+            for (Ticket ticket : tickets.values()) {
+                System.out.println("Ticket ID: " + ticket.ticketId);
+                System.out.println(ticket.passenger);
+                System.out.println("Train No: " + ticket.trainNo + " | " + ticket.trainName);
+                System.out.println("Berth: " + ticket.berth);
+                System.out.println("Status: " + ticket.status);
+                System.out.println("---------------------------");
+            }
         }
 
     }
@@ -94,12 +99,17 @@ public class BookingSystem {
         Ticket ticket = tickets.get(ticketId);
         if (ticket == null || ticket.status.equals("Cancelled")) return;
 
-        Train train = trains.values().iterator().next(); // assume single train for now
+        Train train = trains.get(ticket.trainNo);
+        if (train == null) {
+            System.out.println("Train not found for ticket " + ticketId);
+            return;
+        }
 
         // Free berth if confirmed
         if (ticket.status.equals("Confirmed")) {
-            if (ticket.berth.startsWith("L")) train.lowerBerths.add(ticket.berth);
-            else if (ticket.berth.startsWith("U")) train.upperBerths.add(ticket.berth);
+            String cancelledBerth = ticket.berth;
+            if (cancelledBerth.startsWith("L")) train.lowerBerths.add(cancelledBerth);
+            else if (cancelledBerth.startsWith("U")) train.upperBerths.add(cancelledBerth);
 
             // Upgrade RAC → Confirmed
             if (!train.racQueue.isEmpty()) {
@@ -107,6 +117,7 @@ public class BookingSystem {
                 if (!train.lowerBerths.isEmpty()) racTicket.berth = train.lowerBerths.poll();
                 else if (!train.upperBerths.isEmpty()) racTicket.berth = train.upperBerths.poll();
                 racTicket.status = "Confirmed";
+                train.confirmedTickets.put(racTicket.ticketId, racTicket);
                 System.out.println("RAC Ticket " + racTicket.ticketId + " upgraded to Confirmed");
 
                 // Upgrade WL → RAC
@@ -129,7 +140,13 @@ public class BookingSystem {
             train.waitingList.remove(ticket);
         }
 
+
+        tickets.remove(ticketId);
+        train.confirmedTickets.remove(ticketId);
+
         ticket.status = "Cancelled";
+        System.out.println("Ticket " + ticketId + " cancelled successfully from Train " + train.trainNo);
     }
+
 
 }

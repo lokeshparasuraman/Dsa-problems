@@ -1,7 +1,6 @@
 package Oops.HashMapTrainBookingSystem;
 
 import java.util.Scanner;
-
 import static Oops.HashMapTrainBookingSystem.BookingSystem.tickets;
 import static Oops.HashMapTrainBookingSystem.BookingSystem.trains;
 
@@ -14,7 +13,7 @@ public class RunApp {
 
         while (con) {
             System.out.println("... Train Booking App ...");
-            System.out.println("1.Add Train\n2.Book Ticket\n3.Cancel Ticket\n4.View trains\n5.View tickets\n6.Exit");
+            System.out.println("1.Add Train\n2.Book Ticket\n3.Cancel Ticket\n4.View train Details\n5.View tickets\n6.Exit");
             System.out.println("Enter Your Option");
             int c = sc.nextInt();
             sc.nextLine();
@@ -29,6 +28,7 @@ public class RunApp {
                     int lB = sc.nextInt();
                     System.out.println("ENTER TRAIN UPPER_BERTHS COUNT");
                     int uB = sc.nextInt();
+
                     System.out.println("ENTER TRAIN RAC COUNT");
                     int rac = sc.nextInt();
                     System.out.println("ENTER TRAIN WAITING LIST COUNT");
@@ -73,7 +73,7 @@ public class RunApp {
                         System.out.println("NO TRAINS WERE ADDED TO VIEW!!");
                         break;
                     }
-                    system.viewTrains();
+                    system.viewTrainDetails();
                     break;
                 }
                 case 5: {

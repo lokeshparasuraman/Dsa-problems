@@ -12,8 +12,6 @@ public class TicketSystem {
 
     public static String bookTicket(String name, int age, String gender, String berthPreferred) {
         String ticketId = "T" + ticketNumber++;
-        if (berthPreferred == null) berthPreferred = "";
-        berthPreferred = berthPreferred.trim();
 
         if (!availableBerths.isEmpty()) {
             String allottedBerth = allottedBerth(age, gender, berthPreferred);
