@@ -77,7 +77,8 @@ public class TicketSystem {
     }
 
     public static void ticketsList() {
-        System.out.println("..Confirmed tickets..\n");
+        System.out.println("************************************");
+        System.out.println("..Confirmed tickets..");
         if (confirmed.isEmpty()) {
             System.out.println("No tickets confirmed\n");
         }
@@ -87,7 +88,7 @@ public class TicketSystem {
             }
         }
 
-        System.out.println("..RAC tickets..\n");
+        System.out.println("..RAC tickets..");
         if (racQueue.isEmpty()) {
             System.out.println("No tickets in RAC\n");
         }
@@ -97,7 +98,7 @@ public class TicketSystem {
             }
         }
 
-        System.out.println("..WaitingList tickets..\n");
+        System.out.println("..WaitingList tickets..");
         if (wList.isEmpty()) {
             System.out.println("No tickets in Waiting List\n");
         }
@@ -106,7 +107,7 @@ public class TicketSystem {
                 System.out.println(p);
             }
         }
-
+        System.out.println("************************************");
     }
 
     public static void availableTickets() {

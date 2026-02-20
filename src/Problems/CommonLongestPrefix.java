@@ -2,8 +2,8 @@ package Problems;
 
 public class CommonLongestPrefix {
     public static void main(String[] args) {
-        String[] qns = {"Helo", "hell", "heat"};
-        
+        String[] qns = {"Helo", "hell", "helt"};
+        System.out.println(longestCommonPrefix(qns));
 
     }
 
