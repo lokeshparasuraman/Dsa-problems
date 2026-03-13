@@ -68,6 +68,7 @@ class MazeWordSearch {
                 {'w', 'x'}, {'y','b'}
         };
         String[] words={"wxyb"};
+
         System.out.println(searchSecretCodes(board,words));
     }
 }       

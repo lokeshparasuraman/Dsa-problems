@@ -1,6 +1,7 @@
 package Oops.HashMapTrainBookingSystem;
 
 import java.util.Scanner;
+
 import static Oops.HashMapTrainBookingSystem.BookingSystem.tickets;
 import static Oops.HashMapTrainBookingSystem.BookingSystem.trains;
 
@@ -8,7 +9,7 @@ public class RunApp {
     static Scanner sc = new Scanner(System.in);
     static BookingSystem system = new BookingSystem();
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         boolean con = true;
 
         while (con) {
@@ -91,7 +92,5 @@ public class RunApp {
                 }
             }
         }
-
-
     }
 }

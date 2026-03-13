@@ -1,7 +1,13 @@
 package Trees;
 import java.util.*;
-import static java.util.Collections.sort;
 public class SafeNodes {
+    static void main(String[] args) {
+        int[][]g={
+                {1,2},{2,3,6},{5},{0},{5},{},{},{3}
+        };
+        System.out.println(safeNodes(g));
+    }
+
     public static List<Integer> safeNodes(int[][]grid){
         int m= grid.length;;
         int n=grid[0].length;
@@ -33,10 +39,5 @@ public class SafeNodes {
         return false;
     }
 
-    static void main(String[] args) {
-        int[][]g={
-                {1,2},{2,3,6},{5},{0},{5},{},{},{3}
-        };
-        System.out.println(safeNodes(g));
-    }
+
 }

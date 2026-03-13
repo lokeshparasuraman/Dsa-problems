@@ -75,7 +75,6 @@ public class BookingSystem {
         }
     }
 
-
     public void viewTickets() {
         if (tickets.isEmpty()) {
             System.out.println("No tickets available.");

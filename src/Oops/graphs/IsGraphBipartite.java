@@ -1,7 +1,10 @@
 package Oops.graphs;
 import java.util.*;
 class IsGraphBipartite {
-    public boolean isBipartite(int[][] graph) {
+    static void main() {
+
+    }
+    public static boolean isBipartite(int[][] graph) {
         int n=graph.length;
         int[]visited= new int[n];
         Arrays.fill(visited,-1);
@@ -12,7 +15,7 @@ class IsGraphBipartite {
         }
         return true;
     }
-    boolean dfs(int i,int c,int[][]graph,int[]visited){
+   static boolean dfs(int i,int c,int[][]graph,int[]visited){
         visited[i]=c;
         for(int k:graph[i]){
             if(visited[k]==-1){

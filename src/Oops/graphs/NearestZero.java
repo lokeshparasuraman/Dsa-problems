@@ -108,7 +108,7 @@ class NearestZero {
 
 
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int m = scanner.nextInt(), n = scanner.nextInt();
         int[][] grid = new int[m][n];

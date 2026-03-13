@@ -6,7 +6,7 @@ public class RBS {
         System.out.println(search(a,54,0,a.length-1));
     }
 
-    //rotated binarySearch using recursion just for learning purpose
+    //rotated binarySearch using recursion
     static int search(int[]arr,int target,int s,int e){
         if(s>e){
             return -1;
