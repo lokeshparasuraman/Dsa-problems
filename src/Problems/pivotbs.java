@@ -6,7 +6,7 @@ public class pivotbs {
         int []arr={4,5,6,7,0,1,2};
         System.out.println(search(arr,0));
     }
-        public static int search(int[] arr, int target) {
+    public static int search(int[] arr, int target) {
 
             int pivot=pivot(arr);
             if(pivot == -1){
