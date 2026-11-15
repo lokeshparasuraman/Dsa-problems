@@ -3,7 +3,7 @@ package Problems;
 public class UnboundedKnapsack {
     static void main() {
         int ans=unboundedKnapsack(4,20, new int[]{66, 100, 400, 1}, new int[]{6, 7, 8, 9});
-        System.out.println(ans);
+        System.out.print(ans);
     }
     public static int unboundedKnapsack(int n, int w, int[] profit, int[] weight) {
         int []prev=new int[w+1];
