@@ -54,7 +54,7 @@ public class shortestCommonSuperSequence {
             s.append(b.charAt(j-1));
             j--;
         }
-
+       
         return new StringBuilder(s).reverse().toString();
     }
 
